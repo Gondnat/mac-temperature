@@ -57,7 +57,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc fileprivate func refreshStatus() {
-        let menu = NSMenu()
+        var menu = NSMenu()
+
+        if statusMenu.menu != nil {
+            menu = statusMenu.menu!
+        }
+        menu.removeAllItems()
         SMCWrapper.shared().readFloat(withKey: "TC0P".cString(using: .ascii)) { (temperature) in
             let title = String(format: "%.01f℃", arguments: [temperature])
             self.statusMenu.button?.title = title
@@ -108,7 +113,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(preferenceMenuItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(quitMenuItem)
-        self.statusMenu.menu = menu
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -122,10 +126,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let timer = Timer(fire: Date(timeIntervalSinceNow: 0), interval: 3, repeats: true) { timer in
                 self.refreshStatus()
             }
-            RunLoop.current.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+            RunLoop.current.add(timer, forMode: .commonModes)
         } else {
             let timer = Timer(fireAt: Date(timeIntervalSinceNow: 0), interval: 3, target: self, selector: #selector(refreshStatus), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+            RunLoop.current.add(timer, forMode: .commonModes)
         }
     }
 
