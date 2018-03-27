@@ -10,6 +10,11 @@
 		4C6288D92068E19200BF61A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6288D82068E19200BF61A5 /* AppDelegate.swift */; };
 		4C6288DB2068E19200BF61A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6288DA2068E19200BF61A5 /* Assets.xcassets */; };
 		4C6288DE2068E19200BF61A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6288DC2068E19200BF61A5 /* MainMenu.xib */; };
+		4C6288EE2068E1C500BF61A5 /* SMCWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6288ED2068E1C500BF61A5 /* SMCWrapper.m */; };
+		4CB760F92069F087009076E7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB760F82069F087009076E7 /* PreferencesWindowController.swift */; };
+		4CB760FC206A1014009076E7 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB760FB206A1014009076E7 /* PreferenceViewController.swift */; };
+		4CB76101206A124C009076E7 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB760FF206A124C009076E7 /* GeneralPreferenceViewController.swift */; };
+		4CB76102206A124C009076E7 /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CB76100206A124C009076E7 /* GeneralPreferenceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,14 @@
 		4C6288DD2068E19200BF61A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4C6288DF2068E19200BF61A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C6288E02068E19200BF61A5 /* Temperature.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Temperature.entitlements; sourceTree = "<group>"; };
+		4C6288E62068E1A800BF61A5 /* Temperature-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Temperature-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C6288EB2068E1C500BF61A5 /* SMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCWrapper.h; sourceTree = "<group>"; };
+		4C6288EC2068E1C500BF61A5 /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smc.h; sourceTree = "<group>"; };
+		4C6288ED2068E1C500BF61A5 /* SMCWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCWrapper.m; sourceTree = "<group>"; };
+		4CB760F82069F087009076E7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		4CB760FB206A1014009076E7 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		4CB760FF206A124C009076E7 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
+		4CB76100206A124C009076E7 /* GeneralPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +50,8 @@
 			children = (
 				4C6288D72068E19200BF61A5 /* Temperature */,
 				4C6288D62068E19200BF61A5 /* Products */,
+				4C6288E62068E1A800BF61A5 /* Temperature-Bridging-Header.h */,
+				4C6288EA2068E1C500BF61A5 /* SMCWrapper */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,8 +71,30 @@
 				4C6288DC2068E19200BF61A5 /* MainMenu.xib */,
 				4C6288DF2068E19200BF61A5 /* Info.plist */,
 				4C6288E02068E19200BF61A5 /* Temperature.entitlements */,
+				4CB760FE206A11F9009076E7 /* Preferences */,
 			);
 			path = Temperature;
+			sourceTree = "<group>";
+		};
+		4C6288EA2068E1C500BF61A5 /* SMCWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				4C6288EB2068E1C500BF61A5 /* SMCWrapper.h */,
+				4C6288EC2068E1C500BF61A5 /* smc.h */,
+				4C6288ED2068E1C500BF61A5 /* SMCWrapper.m */,
+			);
+			path = SMCWrapper;
+			sourceTree = "<group>";
+		};
+		4CB760FE206A11F9009076E7 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				4CB760F82069F087009076E7 /* PreferencesWindowController.swift */,
+				4CB760FB206A1014009076E7 /* PreferenceViewController.swift */,
+				4CB760FF206A124C009076E7 /* GeneralPreferenceViewController.swift */,
+				4CB76100206A124C009076E7 /* GeneralPreferenceViewController.xib */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,7 +129,13 @@
 				TargetAttributes = {
 					4C6288D42068E19200BF61A5 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -121,6 +164,7 @@
 			files = (
 				4C6288DB2068E19200BF61A5 /* Assets.xcassets in Resources */,
 				4C6288DE2068E19200BF61A5 /* MainMenu.xib in Resources */,
+				4CB76102206A124C009076E7 /* GeneralPreferenceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB76101206A124C009076E7 /* GeneralPreferenceViewController.swift in Sources */,
+				4CB760F92069F087009076E7 /* PreferencesWindowController.swift in Sources */,
 				4C6288D92068E19200BF61A5 /* AppDelegate.swift in Sources */,
+				4C6288EE2068E1C500BF61A5 /* SMCWrapper.m in Sources */,
+				4CB760FC206A1014009076E7 /* PreferenceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Temperature/Temperature.entitlements;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H3QAP7M2S2;
@@ -267,6 +315,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thnuth.Temperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Temperature-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -275,7 +325,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Temperature/Temperature.entitlements;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H3QAP7M2S2;
@@ -283,6 +333,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thnuth.Temperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Temperature-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
