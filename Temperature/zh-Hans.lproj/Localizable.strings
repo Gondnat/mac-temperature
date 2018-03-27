@@ -1,0 +1,24 @@
+/* Current fan speed */
+"Current Speed: %d RPM" = "当前速度: %d RPM";
+
+/* Fan number */
+"Fan  #%d" = "风扇 #%d";
+
+/* General preference title */
+"General" = "通用";
+
+/* Fan max speed */
+"Max Speed: %d RPM" = "最大速度: %d RPM";
+
+/* Fan  min speed */
+"Min Speed: %d RPM" = "最小速度: %d RPM";
+
+/* button will show preferences */
+"Preferences..." = "首选项...";
+
+/* Quit App */
+"Quit" = "退出";
+
+/* Fan  target speed */
+"Target Speed: %d RPM" = "目标速度: %d RPM";
+

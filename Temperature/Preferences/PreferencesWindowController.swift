@@ -3,7 +3,7 @@
 //  Temperature
 //
 //  Created by Gondnat on 27/03/2018.
-//  Copyright © 2018 Destiny. All rights reserved.
+//  Copyright © 2018 Gondnat. All rights reserved.
 //
 
 import Cocoa
