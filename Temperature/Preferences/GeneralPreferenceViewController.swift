@@ -8,12 +8,13 @@
 
 import Cocoa
 
+let refreshSecondID = "refreshSecond"
+
 class GeneralPreferenceViewController: NSViewController, PreferenceViewController {
     private let id = "general.preference.view.controller"
     var toolbarIdentifier: NSToolbarItem.Identifier {
         return NSToolbarItem.Identifier((identifier?.rawValue) ?? id)
     }
-
     var image: NSImage {
         return NSImage(named: NSImage.Name.preferencesGeneral)!
     }

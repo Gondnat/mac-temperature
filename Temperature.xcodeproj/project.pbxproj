@@ -16,7 +16,7 @@
 		4CB760F92069F087009076E7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB760F82069F087009076E7 /* PreferencesWindowController.swift */; };
 		4CB760FC206A1014009076E7 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB760FB206A1014009076E7 /* PreferenceViewController.swift */; };
 		4CB76101206A124C009076E7 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB760FF206A124C009076E7 /* GeneralPreferenceViewController.swift */; };
-		4CB76102206A124C009076E7 /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CB76100206A124C009076E7 /* GeneralPreferenceViewController.xib */; };
+		4CD04291206B760E0076390B /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD04293206B760E0076390B /* GeneralPreferenceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,8 @@
 		4CB760F82069F087009076E7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		4CB760FB206A1014009076E7 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		4CB760FF206A124C009076E7 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
-		4CB76100206A124C009076E7 /* GeneralPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
+		4CD04292206B760E0076390B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
+		4CD04295206B76140076390B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GeneralPreferenceViewController.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +100,7 @@
 				4CB760F82069F087009076E7 /* PreferencesWindowController.swift */,
 				4CB760FB206A1014009076E7 /* PreferenceViewController.swift */,
 				4CB760FF206A124C009076E7 /* GeneralPreferenceViewController.swift */,
-				4CB76100206A124C009076E7 /* GeneralPreferenceViewController.xib */,
+				4CD04293206B760E0076390B /* GeneralPreferenceViewController.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -153,6 +154,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 4C6288CC2068E19200BF61A5;
 			productRefGroup = 4C6288D62068E19200BF61A5 /* Products */;
@@ -172,7 +174,7 @@
 				4C6288DB2068E19200BF61A5 /* Assets.xcassets in Resources */,
 				4C45E547206A479900D884E2 /* Localizable.strings in Resources */,
 				4C6288DE2068E19200BF61A5 /* MainMenu.xib in Resources */,
-				4CB76102206A124C009076E7 /* GeneralPreferenceViewController.xib in Resources */,
+				4CD04291206B760E0076390B /* GeneralPreferenceViewController.xib in Resources */,
 				4C45E54C206A479900D884E2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +220,15 @@
 				4C45E538206A443900D884E2 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		4CD04293206B760E0076390B /* GeneralPreferenceViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD04292206B760E0076390B /* Base */,
+				4CD04295206B76140076390B /* zh-Hans */,
+			);
+			name = GeneralPreferenceViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -272,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -324,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

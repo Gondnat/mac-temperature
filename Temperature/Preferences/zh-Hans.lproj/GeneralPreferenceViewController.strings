@@ -1,0 +1,15 @@
+/* Class = "NSTextFieldCell"; title = "Refresh:"; ObjectID = "HHh-FB-ozz"; */
+"HHh-FB-ozz.title" = "刷新间隔:";
+
+/* Class = "NSMenuItem"; title = "Every minute"; ObjectID = "NnQ-5I-Pun"; */
+"NnQ-5I-Pun.title" = "每分钟";
+
+/* Class = "NSMenuItem"; title = "Every 5 seconds"; ObjectID = "kEk-kd-s7k"; */
+"kEk-kd-s7k.title" = "5秒";
+
+/* Class = "NSMenuItem"; title = "Every second"; ObjectID = "xKN-Cb-tr4"; */
+"xKN-Cb-tr4.title" = "每秒";
+
+/* Class = "NSMenuItem"; title = "Every 10 seconds"; ObjectID = "xwX-Mm-avw"; */
+"xwX-Mm-avw.title" = "10秒";
+

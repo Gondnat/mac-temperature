@@ -35,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return NSMenuItem(title: NSLocalizedString("Preferences...", comment: "button will show preferences"), action: #selector(preference), keyEquivalent: ",")
     }
 
+    private var refreshTimer:Timer?
 
     fileprivate func fanMenuItem(title string: String) -> NSMenuItem {
         let fanMenuItem = NSMenuItem()
@@ -58,7 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc fileprivate func refreshStatus() {
         var menu = NSMenu()
-
         if statusMenu.menu != nil {
             menu = statusMenu.menu!
         }
@@ -121,20 +121,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(quitMenuItem)
         self.statusMenu.menu = menu
-//        let timer = Timer(timeInterval: 6, repeats: true) { timer in
-        if #available(OSX 10.12, *) {
-            let timer = Timer(fire: Date(timeIntervalSinceNow: 0), interval: 3, repeats: true) { timer in
-                self.refreshStatus()
-            }
-            RunLoop.current.add(timer, forMode: .commonModes)
-        } else {
-            let timer = Timer(fireAt: Date(timeIntervalSinceNow: 0), interval: 3, target: self, selector: #selector(refreshStatus), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer, forMode: .commonModes)
-        }
+        createRefreshTimer()
+        UserDefaults.standard.addObserver(self, forKeyPath: refreshSecondID, options: .new, context: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+
+    func createRefreshTimer() {
+        var interval = UserDefaults.standard.value(forKey: refreshSecondID) as? TimeInterval
+        if interval == nil {
+            UserDefaults.standard.setValue(1, forKey: refreshSecondID)
+            interval = 1
+        }
+        if #available(OSX 10.12, *) {
+            refreshTimer = Timer(fire: Date(timeIntervalSinceNow: 0), interval: interval!, repeats: true) { timer in
+                self.refreshStatus()
+            }
+            RunLoop.current.add(refreshTimer!, forMode: .commonModes)
+        } else {
+            refreshTimer = Timer(fireAt: Date(timeIntervalSinceNow: 0), interval: interval!, target: self, selector: #selector(refreshStatus), userInfo: nil, repeats: true)
+            RunLoop.current.add(refreshTimer!, forMode: .commonModes)
+        }
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == refreshSecondID {
+            refreshTimer?.invalidate()
+            createRefreshTimer()
+        }
     }
 
 
