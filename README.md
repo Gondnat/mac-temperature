@@ -1,5 +1,6 @@
 # mac-temperature
-Tool to show CPU temperature on mac machine
+
+Tool to show CPU temperature and fans' speed on Mac
 
 ## Screen Shot
 
