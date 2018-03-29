@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SMCWrapper.shared().readFloat(withKey: "TC0P".cString(using: .ascii)) { (temperature) in
             let title = String(format: "%.01f℃", arguments: [temperature])
             self.statusMenu.button?.title = title
-            self.statusMenu.button?.font = NSFont(name: "system", size: 10)
+//            self.statusMenu.button?.font = NSFont.systemFont(ofSize: 14)
         }
 
         SMCWrapper.shared().readFloat(withKey: "FNum".cString(using: .ascii)) { fansCount in
