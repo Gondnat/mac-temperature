@@ -1,8 +1,8 @@
-# mac-temperature
+# Temperature on macOS
 
 Tool used to show CPU temperature and fans' speed on Mac
 
-## Languages
+## Supported Languages
 
 * English
 
