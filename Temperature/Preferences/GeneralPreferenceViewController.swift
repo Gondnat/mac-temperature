@@ -21,6 +21,7 @@
 import Cocoa
 
 let refreshSecondID = "refreshSecond"
+let temperatureScaleID = "TemperatureScale"
 
 class GeneralPreferenceViewController: NSViewController, PreferenceViewController {
     private let id = "general.preference.view.controller"

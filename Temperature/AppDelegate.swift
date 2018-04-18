@@ -77,8 +77,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         menu.removeAllItems()
         SMCWrapper.shared().readFloat(withKey: "TC0P".cString(using: .ascii)) { (temperature) in
-            let title = String(format: "%.01f℃", arguments: [temperature])
-            self.statusMenu.button?.title = title
+            var temper = temperature
+            var format = "%.01f℃";
+            if let temperatureScale = UserDefaults.standard.value(forKey: temperatureScaleID) as? Int {
+                if temperatureScale == 1 {
+                    format = "%.01f℉"
+                    temper = temper*9/5 + 32
+                }
+            }
+            self.statusMenu.button?.title = String(format: format, temper)
 //            self.statusMenu.button?.font = NSFont.systemFont(ofSize: 14)
         }
 
@@ -136,6 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.statusMenu.menu = menu
         createRefreshTimer()
         UserDefaults.standard.addObserver(self, forKeyPath: refreshSecondID, options: .new, context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: temperatureScaleID, options: .new, context: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -160,9 +168,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == refreshSecondID {
+        switch keyPath {
+        case refreshSecondID:
             refreshTimer?.invalidate()
             createRefreshTimer()
+        case temperatureScaleID:
+            refreshTimer?.fire()
+        default:
+            break
         }
     }
 
