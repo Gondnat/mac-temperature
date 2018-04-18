@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8x2-55-Lib">
-                    <rect key="frame" x="48" y="160" width="55" height="17"/>
+                    <rect key="frame" x="68" y="160" width="55" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Refresh:" id="HHh-FB-ozz">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -26,7 +26,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-R4-T87">
-                    <rect key="frame" x="107" y="155" width="143" height="26"/>
+                    <rect key="frame" x="127" y="155" width="143" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Every second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="xKN-Cb-tr4" id="7eh-yT-MQ7">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -46,7 +46,7 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dPa-bC-6oY">
-                    <rect key="frame" x="18" y="129" width="85" height="17"/>
+                    <rect key="frame" x="38" y="129" width="85" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature:" id="B5E-RD-Dzw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -54,7 +54,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HVd-Cf-0vc">
-                    <rect key="frame" x="107" y="124" width="128" height="26"/>
+                    <rect key="frame" x="127" y="124" width="128" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="℃ - Celsius" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oPX-jg-o1L" id="imo-9D-2Qp">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -75,11 +75,13 @@
                 <constraint firstItem="8x2-55-Lib" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="7cK-8W-18b"/>
                 <constraint firstItem="gjz-R4-T87" firstAttribute="leading" secondItem="8x2-55-Lib" secondAttribute="trailing" constant="8" symbolic="YES" id="9HZ-IM-ODQ"/>
                 <constraint firstItem="gjz-R4-T87" firstAttribute="centerY" secondItem="8x2-55-Lib" secondAttribute="centerY" id="BHm-jZ-u64"/>
+                <constraint firstItem="gjz-R4-T87" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="LFA-oM-Dml"/>
                 <constraint firstItem="HVd-Cf-0vc" firstAttribute="centerY" secondItem="dPa-bC-6oY" secondAttribute="centerY" id="Mai-nG-LGU"/>
                 <constraint firstItem="HVd-Cf-0vc" firstAttribute="top" secondItem="gjz-R4-T87" secondAttribute="bottom" constant="10" symbolic="YES" id="SDt-jE-n73"/>
                 <constraint firstItem="dPa-bC-6oY" firstAttribute="trailing" secondItem="8x2-55-Lib" secondAttribute="trailing" id="Zc9-YK-tAR"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HVd-Cf-0vc" secondAttribute="trailing" constant="20" symbolic="YES" id="Zua-gy-7E2"/>
                 <constraint firstItem="8x2-55-Lib" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="bT5-n4-xrX"/>
-                <constraint firstItem="dPa-bC-6oY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="h1t-ij-v2h"/>
+                <constraint firstItem="dPa-bC-6oY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="h1t-ij-v2h"/>
                 <constraint firstItem="HVd-Cf-0vc" firstAttribute="leading" secondItem="gjz-R4-T87" secondAttribute="leading" id="nAn-dS-Y0X"/>
             </constraints>
             <point key="canvasLocation" x="96.5" y="131.5"/>
