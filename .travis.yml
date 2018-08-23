@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: Temperature.xcodeproj
+xcode_scheme: Temperature
+xcode_destination: platform=macOS
