@@ -4,3 +4,11 @@ xcode_scheme: Temperature
 xcode_destination: platform=macOS
 before_script:
  - ./updatecer.sh
+
+deploy:
+  provider: releases
+  api_key: b7ad875288fb219bbb8037026dbf1af217878837
+  file: *.app
+  skip_cleanup: true
+  on:
+    tags: true
