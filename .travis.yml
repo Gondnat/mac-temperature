@@ -3,4 +3,4 @@ xcode_project: Temperature.xcodeproj
 xcode_scheme: Temperature
 xcode_destination: platform=macOS
 before_script:
- - sh updatecer.sh
+ - ./updatecer.sh
