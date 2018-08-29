@@ -16,4 +16,5 @@ Tool used to show CPU temperature and fans' speed on Mac
 
 ## Screen Shot
 
-![](ScreenShot.png)
+![](./ScreenShot.png =262x284)
+![](./ScreenShot1.png = 507x)
