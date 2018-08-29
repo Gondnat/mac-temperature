@@ -7,7 +7,7 @@ before_script:
 
 deploy:
   provider: releases
-  api_key: b7ad875288fb219bbb8037026dbf1af217878837
+  api_key: $GITHUB_TOKEN
   file: *.app
   skip_cleanup: true
   on:
