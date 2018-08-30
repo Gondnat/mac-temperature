@@ -6,15 +6,13 @@ before_script:
 - "./updatecer.sh"
 jobs:
   include:
+    - script: echo "Test 1"
     - stage: Release
       deploy:
-      provider: releases
-      api_key:
+        provider: releases
+        api_key:
           secure: Plc0iZxoAbPkPNgCUo40Wu3rf0WcHnVkCkIPegzE28Zx/rm1W1daoPTbiJNGap5n7vl2YRFuZlcD9fZ/fV3KBhyy3oQOYcnkgW1jAzvHyiugsrchtCKNYAJLoM4fRsx7q8ixPBoUItpGbBu302mUuSFyr7XPzc4w8rfKTLbCSF4sfM3OuUKPdd4Q3Edmm9Cl1D2KfsnWJxG6cJtZYc6amBrFJhyrfBhuKp6iPv4lAgZ98o0/r7J6fm7rYAAp3oTaYAtiQi/sgZXVPvycYH+md6SI/C7rhg/WFlELWMQ+6yKnOuHz6Kqk3O5kX2M44dYMLzYswD1wyq+a0K2jXU2sSZkEJVkAAe9smGnbUWfK3yP3rk8VbxTJ4Btx+Su+YtZ0GCgtH3SEq8dyE9l/s6nAm/nb8fZXHiwKDxbrrO8xvYu3svRwEwKS1fAcxl42tewg4MyYLESPxUH3QTZ8G5mFeFDdpze6VCU6afc9wUXneGeGpxU0WxUVOySP7zS/56eUY6UjEfvK9ZRAnbAmbN6djomCHlPecW73J+MYOaHpnTccHcrJgCA6kWXVdJ7eMtfxfSEDN17A9Dl3YYdWFOETvQUYHo68NtumGKFgv9wNd5FX72EbIlP4SDY0VGvRhnp9uSYx9nVJZp9FvbzUsdbQfq6mstpydtTz8VGTaB6pcjM=
-       file: "build/Release/Temperature.app"
-       skip_cleanup: true
-       on:
-         tags: true
-notifications:
-  slack:
-    on_success: never
+        file: "build/Release/Temperature.app"
+        skip_cleanup: true
+        on:
+          tags: true
