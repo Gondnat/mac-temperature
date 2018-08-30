@@ -195,19 +195,13 @@ static SMCWrapper *sharedInstance = nil;
  * readKey:intoNumber - Reads a given key from the SMC and formats the corresponding
  *  value as an NSNumber (passed by reference). Returns a BOOL indicating success.
  */
--(BOOL) readFloatWithKey:(const char *)key withComplation: (void(^)(float value)) complation {
-    // NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    if (![self readStringWithKey:key withComplation:^(NSString *string) {
-        NSString *stringVal;
-        stringVal = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        if (stringVal != nil) {
-            complation(stringVal.floatValue);
-        }
-    }]) {
-        return NO;
+-(float) floatForKey:(const char *)key {
+    NSString *stringVal = [[self stringForKey:key] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (stringVal == nil) {
+        return -1;
+    } else {
+        return stringVal.floatValue;
     }
-
-    return YES;
 }
 
 
@@ -215,7 +209,7 @@ static SMCWrapper *sharedInstance = nil;
  * readKey:asString - Reads a given key from the SMC and formats the corresponding
  *  value as an NSString (passed by reference). Returns a BOOL indicating success.
  */
--(BOOL) readStringWithKey:(const char *)key withComplation: (void (^)(NSString *string)) complation {
+-(NSString *) stringForKey:(const char *)key {
     char cStr[16];   // Something has gone majorly wrong if it's over 15 digits long.
     SMCVal_t val;
     kern_return_t result;
@@ -225,7 +219,7 @@ static SMCWrapper *sharedInstance = nil;
     
     // Do value checking on val.
     if (result != kIOReturnSuccess) {
-        return NO;
+        return nil;
     }
     
     // Mac OS X means rubbish FourCC style data type referencing
@@ -233,10 +227,7 @@ static SMCWrapper *sharedInstance = nil;
                           forSize: val.dataSize
                            ofType: val.dataType
                          inBuffer: &cStr[0]];
-    NSString * string = [NSString stringWithUTF8String:cStr]; //[[[NSString alloc] initWithCString:cStr encoding:NSUTF8StringEncoding] copy];
-    complation(string);
-    return YES;
-
+    return [NSString stringWithUTF8String:cStr];
 }
 
 

@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let fanMenuItem = NSMenuItem()
         fanMenuItem.isEnabled = false
         fanMenuItem.attributedTitle = NSAttributedString(string: string,
-                                                         attributes: [NSAttributedStringKey.font: NSFont.messageFont(ofSize: 12)])
+                                                         attributes: [NSAttributedStringKey.font: NSFont.systemFont(ofSize: 12)])
         return fanMenuItem
     }
     @objc fileprivate func quit() {
@@ -76,58 +76,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu = statusMenu.menu!
         }
         menu.removeAllItems()
-        SMCWrapper.shared().readFloat(withKey: "TC0P".cString(using: .ascii)) { (temperature) in
-            var temper = temperature
-            var format = "%.01f℃";
-            if let temperatureScale = UserDefaults.standard.value(forKey: temperatureScaleID) as? Int {
-                if temperatureScale == 1 {
-                    format = "%.01f℉"
-                    temper = temper*9/5 + 32
-                }
+        var temper = SMCWrapper.shared().float(forKey: "TC0P")
+        var format = "%.01f℃";
+        if let temperatureScale = UserDefaults.standard.value(forKey: temperatureScaleID) as? Int {
+            if temperatureScale == 1 {
+                format = "%.01f℉"
+                temper = temper*9/5 + 32
             }
-            self.statusMenu.button?.title = String(format: format, temper)
-//            self.statusMenu.button?.font = NSFont.systemFont(ofSize: 14)
         }
-
-        SMCWrapper.shared().readFloat(withKey: "FNum".cString(using: .ascii)) { fansCount in
-            var i = 0;
-            while i < Int(fansCount) {
-                let fmt = NSLocalizedString("Fan  #%d", comment: "Fan number")
-                let fanNameItem = NSMenuItem(title: String(format: fmt, arguments:[i+1]), action: nil, keyEquivalent: "")
-                fanNameItem.isEnabled = false
-                menu.addItem(fanNameItem)
-
-                // actual RPM
-                SMCWrapper.shared().readFloat(withKey: "F\(i)Ac".cString(using: .ascii),
-                                              withComplation: { fanRPM in
-                                                let fmt = NSLocalizedString("Current Speed: %d RPM", comment: "Current fan speed")
-                                                menu.addItem(self.fanMenuItem(title: String(format: fmt, arguments: [Int(fanRPM)])))
-                })
+        self.statusMenu.button?.title = String(format: format, temper)
 
 
-                // target RPM
-                SMCWrapper.shared().readFloat(withKey: "F\(i)Tg".cString(using: .ascii),
-                                              withComplation: { fanRPM in
-                                                let fmt = NSLocalizedString("Target Speed: %d RPM", comment: "Fan  target speed")
-                                                menu.addItem(self.fanMenuItem(title: String(format: fmt, arguments: [Int(fanRPM)])))
-                })
+        let fansCount = SMCWrapper.shared().float(forKey: "FNum")
+        var i = 0;
+        while i < Int(fansCount) {
+            var fmt = NSLocalizedString("Fan  #%d", comment: "Fan number")
+            let fanNameItem = NSMenuItem(title: String(format: fmt, arguments:[i+1]), action: nil, keyEquivalent: "")
+            fanNameItem.isEnabled = false
+            menu.addItem(fanNameItem)
 
-                // MIN RPM
-                SMCWrapper.shared().readFloat(withKey: "F\(i)Mn",
-                    withComplation: { fanRPM in
-                        let fmt = NSLocalizedString("Min Speed: %d RPM", comment: "Fan  min speed")
-                        menu.addItem(self.fanMenuItem(title: String(format: fmt, arguments: [Int(fanRPM)])))
-                })
-                // MAX RPM
-                SMCWrapper.shared().readFloat(withKey: "F\(i)Mx",
-                    withComplation: { fanRPM in
-                        let fmt = NSLocalizedString("Max Speed: %d RPM", comment: "Fan max speed")
-                        menu.addItem(self.fanMenuItem(title: String(format: fmt, arguments: [Int(fanRPM)])))
-                })
+            // actual RPM
+            let fanRPM = SMCWrapper.shared().float(forKey: "F\(i)Ac")
+            let targetRPM = SMCWrapper.shared().float(forKey: "F\(i)Tg")
+            fmt = NSLocalizedString("Current Speed: %.0f RPM %@", comment: "Current fan speed")
+            let addSignal = targetRPM>fanRPM ? "△" : "▽"
+            menu.addItem(self.fanMenuItem(title: String(format: fmt, fanRPM, addSignal)))
 
-                menu.addItem(NSMenuItem.separator())
-                i += 1
-            }
+            // MIN RPM
+            let miniRPM = SMCWrapper.shared().float(forKey: "F\(i)Mn")
+            fmt = NSLocalizedString("Min Speed: %.0f RPM", comment: "Fan  min speed")
+            menu.addItem(self.fanMenuItem(title: String(format: fmt, miniRPM)))
+
+            // MAX RPM
+            let maxRPM = SMCWrapper.shared().float(forKey: "F\(i)Mx")
+            fmt = NSLocalizedString("Max Speed: %.0f RPM", comment: "Fan max speed")
+            menu.addItem(self.fanMenuItem(title: String(format: fmt, maxRPM)))
+
+            menu.addItem(NSMenuItem.separator())
+            i += 1
         }
 
         menu.addItem(preferenceMenuItem)

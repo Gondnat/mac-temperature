@@ -42,8 +42,8 @@
                        inBuffer: (char *)str;
 
 // "Public" methods; i.e the only real methods used externally.
--(BOOL) readFloatWithKey:(const char *)key withComplation: (void(^)(float value)) complation;
--(BOOL) readStringWithKey:(const char *)key withComplation: (void (^)(NSString *string)) complation;
+-(float) floatForKey:(const char *)key;
+-(NSString *) stringForKey:(const char *)key;
 
 
 @end
