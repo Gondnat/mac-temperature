@@ -12,3 +12,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+notifications:
+  slack:
+    on_success: never
