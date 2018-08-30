@@ -11,4 +11,4 @@ deploy:
   file: "*.app"
   skip_cleanup: true
   on:
-    tag: true
+    tags: true
