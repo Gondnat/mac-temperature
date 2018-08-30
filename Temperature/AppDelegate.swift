@@ -99,7 +99,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let fanRPM = SMCWrapper.shared().float(forKey: "F\(i)Ac")
             let targetRPM = SMCWrapper.shared().float(forKey: "F\(i)Tg")
             fmt = NSLocalizedString("Current Speed: %.0f RPM %@", comment: "Current fan speed")
-            let addSignal = targetRPM>fanRPM ? "△" : "▽"
+            let diff = targetRPM - fanRPM ;
+            var addSignal = "➖"
+            if fabs(diff) > 2 {
+               addSignal = diff > 0 ? "△" : "▽"
+            }
             menu.addItem(self.fanMenuItem(title: String(format: fmt, fanRPM, addSignal)))
 
             // MIN RPM
