@@ -24,7 +24,7 @@ class PreferencesWindowController: NSWindowController, NSToolbarDelegate {
     var preferenceViewControllers:[PreferenceViewController]? {
         didSet {
             if window?.toolbar == nil {
-                let toolbar = NSToolbar(identifier: NSToolbar.Identifier("Preferences.ToolBar"))
+                let toolbar = NSToolbar(identifier: "Preferences.ToolBar")
                 toolbar.displayMode = .iconAndLabel
                 toolbar.delegate = self
                 toolbar.autosavesConfiguration = false

@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let fanMenuItem = NSMenuItem()
         fanMenuItem.isEnabled = false
         fanMenuItem.attributedTitle = NSAttributedString(string: string,
-                                                         attributes: [NSAttributedStringKey.font: NSFont.systemFont(ofSize: 12)])
+                                                         attributes: [NSAttributedString.Key.font: NSFont.systemFont(ofSize: 12)])
         return fanMenuItem
     }
     @objc fileprivate func quit() {
@@ -101,7 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             fmt = NSLocalizedString("Current Speed: %.0f RPM %@", comment: "Current fan speed")
             let diff = targetRPM - fanRPM ;
             var addSignal = "➖"
-            if fabs(diff) > 2 {
+            if abs(diff) > 2 {
                addSignal = diff > 0 ? "△" : "▽"
             }
             menu.addItem(self.fanMenuItem(title: String(format: fmt, fanRPM, addSignal)))
@@ -150,10 +150,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             refreshTimer = Timer(fire: Date(timeIntervalSinceNow: 0), interval: interval!, repeats: true) { timer in
                 self.refreshStatus()
             }
-            RunLoop.current.add(refreshTimer!, forMode: .commonModes)
+            RunLoop.current.add(refreshTimer!, forMode: RunLoop.Mode.common)
         } else {
             refreshTimer = Timer(fireAt: Date(timeIntervalSinceNow: 0), interval: interval!, target: self, selector: #selector(refreshStatus), userInfo: nil, repeats: true)
-            RunLoop.current.add(refreshTimer!, forMode: .commonModes)
+            RunLoop.current.add(refreshTimer!, forMode: RunLoop.Mode.common)
         }
     }
 

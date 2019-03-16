@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Temperature
 
 class TemperatureTests: XCTestCase {
     
@@ -32,4 +33,10 @@ class TemperatureTests: XCTestCase {
         }
     }
     
+    func testKeyWord() {
+        let keys = ["TC0P", "TC1P", "TC2P", "TCP", "TG0P", "TH0P", "TG0D", "TG0H", "Th0H", "TM0S", "TC0F"]
+        for key in keys {
+            print("\(key) : \(SMCWrapper.shared().float(forKey: key))")
+        }
+    }
 }

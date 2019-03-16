@@ -29,7 +29,7 @@ class GeneralPreferenceViewController: NSViewController, PreferenceViewControlle
         return NSToolbarItem.Identifier((identifier?.rawValue) ?? id)
     }
     var image: NSImage {
-        return NSImage(named: NSImage.Name.preferencesGeneral)!
+        return NSImage(named: NSImage.preferencesGeneralName)!
     }
 
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class GeneralPreferenceViewController: NSViewController, PreferenceViewControlle
     }
 
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: NSNib.Name(rawValue: GeneralPreferenceViewController.className()), bundle: nil)
+        super.init(nibName: GeneralPreferenceViewController.className(), bundle: nil)
         title = NSLocalizedString("General", comment: "General preference title")
         identifier = NSUserInterfaceItemIdentifier(id)
     }
